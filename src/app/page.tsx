@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { FiKey } from "react-icons/fi";
 
 export default function Home() {
   return (
@@ -49,6 +51,13 @@ export default function Home() {
           >
             Read our docs
           </a>
+          <Link
+            href="/dashboard"
+            className="rounded-full border border-solid border-transparent bg-black text-white font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 flex items-center gap-2 shadow transition-all duration-200 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+          >
+            <FiKey className="w-5 h-5 transition-transform duration-200 group-hover:rotate-12" />
+            <span>Manage API Keys</span>
+          </Link>
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
