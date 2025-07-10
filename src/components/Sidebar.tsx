@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { FiHome, FiBookOpen, FiFileText, FiCode, FiFile, FiExternalLink, FiUser, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import Link from 'next/link';
@@ -7,7 +8,7 @@ const navItems = [
   { name: 'Overview', href: '/dashboard', icon: FiHome },
   { name: 'Research Assistant', href: '#', icon: FiBookOpen },
   { name: 'Research Reports', href: '#', icon: FiFileText },
-  { name: 'API Playground', href: '#', icon: FiCode },
+  { name: 'API Playground', href: '/playground', icon: FiCode },
   { name: 'Invoices', href: '#', icon: FiFile },
   { name: 'Documentation', href: 'https://docs.example.com', icon: FiExternalLink, external: true },
 ];

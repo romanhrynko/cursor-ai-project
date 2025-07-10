@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect } from "react";
 import { 
-  Sidebar, 
   PlanCard, 
   ApiKeysTable, 
   ApiKeyModal, 
@@ -51,7 +50,6 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#101014] flex">
-      <Sidebar />
       <main className="flex-1 py-8 px-2 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <PlanCard 
