@@ -1,4 +1,4 @@
-import { ApiKey, ApiKeyForm, ModalType } from '@/types/api';
+import { ApiKeyForm, ModalType } from '@/types/api';
 import { generateApiKey } from '@/lib/utils';
 
 interface ApiKeyModalProps {
@@ -79,7 +79,7 @@ export function ApiKeyModal({
             min={1}
           />
           <div className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-            * If the combined usage of all your keys exceeds your plan's limit, all requests will be rejected.
+            * If the combined usage of all your keys exceeds your plan&apos;s limit, all requests will be rejected.
           </div>
           <div className="relative">
             <label className="block text-sm font-semibold mb-1" htmlFor="key-value">

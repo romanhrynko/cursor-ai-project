@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiKey, FiEdit2, FiTrash2, FiPlus, FiEye, FiEyeOff, FiCopy } from "react-icons/fi";
+import { FiEdit2, FiTrash2, FiPlus, FiEye, FiEyeOff, FiCopy } from "react-icons/fi";
 import { ApiKey } from '@/types/api';
 import { maskKey } from '@/lib/utils';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';

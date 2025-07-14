@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ApiKey, ApiKeyForm } from '@/types/api';
+import { ApiKey, ApiKeyForm, ModalType } from '@/types/api';
 import { generateApiKey } from '@/lib/utils';
 import { fetchApiKeys, createApiKey, updateApiKey, deleteApiKey } from '@/api/apiKeys';
 
@@ -8,8 +8,8 @@ export function useApiKeys({
   setModal,
   showToast,
 }: {
-  modal: any;
-  setModal: (modal: any) => void;
+  modal: ModalType;
+  setModal: (modal: ModalType) => void;
   showToast: (message: string, type?: 'success' | 'error') => void;
 }) {
   const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);

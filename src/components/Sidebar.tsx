@@ -1,16 +1,12 @@
 "use client";
 import { useState } from 'react';
-import { FiHome, FiBookOpen, FiFileText, FiCode, FiFile, FiExternalLink, FiUser, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiHome,  FiCode,  FiUser, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
   { name: 'Overview', href: '/dashboard', icon: FiHome },
-  { name: 'Research Assistant', href: '#', icon: FiBookOpen },
-  { name: 'Research Reports', href: '#', icon: FiFileText },
   { name: 'API Playground', href: '/playground', icon: FiCode },
-  { name: 'Invoices', href: '#', icon: FiFile },
-  { name: 'Documentation', href: 'https://docs.example.com', icon: FiExternalLink, external: true },
 ];
 
 export function Sidebar() {
@@ -36,32 +32,19 @@ export function Sidebar() {
       {/* Navigation */}
       <nav className="flex-1">
         <ul className="space-y-1">
-          {navItems.map((item, idx) => {
-            const isActive = !item.external && pathname === item.href;
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
             return (
               <li key={item.name}>
-                {item.external ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-200/60 transition font-medium group cursor-pointer ${open ? 'px-3' : 'justify-center'}`}
-                  >
-                    <item.icon className="w-5 h-5 text-gray-400 group-hover:text-primary" />
+                <Link
+                  href={item.href}
+                  className={`block rounded-lg transition font-medium group cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-200/60 ${isActive ? 'bg-gray-100 text-primary font-bold' : 'text-gray-700'}`}
+                >
+                  <div className={`flex items-center gap-3 py-2 w-full ${open ? 'px-3' : 'justify-center'}`}>
+                    <item.icon className={`w-5 h-5 ${isActive ? 'text-primary' : 'text-gray-400'} group-hover:text-primary`} />
                     {open && <span>{item.name}</span>}
-                    {open && <FiExternalLink className="w-4 h-4 ml-auto text-gray-300" />}
-                  </a>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className={`block rounded-lg transition font-medium group cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-200/60 ${isActive ? 'bg-gray-100 text-primary font-bold' : 'text-gray-700'}`}
-                  >
-                    <div className={`flex items-center gap-3 py-2 w-full ${open ? 'px-3' : 'justify-center'}`}>
-                      <item.icon className={`w-5 h-5 ${isActive ? 'text-primary' : 'text-gray-400'} group-hover:text-primary`} />
-                      {open && <span>{item.name}</span>}
-                    </div>
-                  </Link>
-                )}
+                  </div>
+                </Link>
               </li>
             );
           })}

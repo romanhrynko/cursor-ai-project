@@ -16,7 +16,6 @@ export default function DashboardPage() {
   const {
     modal,
     setModal,
-    openModal,
     closeModal,
     toast,
     showToast,
