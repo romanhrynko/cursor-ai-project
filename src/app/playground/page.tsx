@@ -1,9 +1,9 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function PlaygroundPage() {
-  const [apiKey, setApiKey] = useState("");
+  const [apiKey, setApiKey] = useState('');
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -21,7 +21,7 @@ export default function PlaygroundPage() {
           type="text"
           placeholder="Enter your API key"
           value={apiKey}
-          onChange={e => setApiKey(e.target.value)}
+          onChange={(e) => setApiKey(e.target.value)}
           className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
@@ -34,4 +34,4 @@ export default function PlaygroundPage() {
       </form>
     </div>
   );
-} 
+}

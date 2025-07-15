@@ -1,25 +1,30 @@
 # Dashboard Refactoring
 
 ## Overview
+
 The dashboard page has been refactored to improve maintainability by separating concerns into smaller, focused components and custom hooks.
 
 ## New Structure
 
 ### Types (`src/types/api.ts`)
+
 - `ApiKey` - Interface for API key data
 - `ApiKeyForm` - Interface for form data
 - `ModalType` - Union type for different modal states
 - `Toast` - Interface for toast notifications
 
 ### Utils (`src/lib/utils.ts`)
+
 - `maskKey()` - Utility function to mask API keys
 - `generateApiKey()` - Utility function to generate new API keys
 
 ### Custom Hooks (`src/hooks/`)
+
 - `useApiKeys()` - Manages all API key operations (CRUD) and state
 - `useCopyToClipboard()` - Manages clipboard operations
 
 ### Components (`src/components/dashboard/`)
+
 - `PlanCard.tsx` - Displays current plan and usage statistics
 - `ApiKeysTable.tsx` - Displays the table of API keys with actions
 - `ApiKeyModal.tsx` - Modal for creating/editing API keys
@@ -27,6 +32,7 @@ The dashboard page has been refactored to improve maintainability by separating 
 - `Sidebar.tsx` - Navigation sidebar (existing)
 
 ### Main Page (`src/app/dashboard/page.tsx`)
+
 - Now only handles layout and coordinates between components
 - Uses custom hooks for all business logic
 - Much cleaner and easier to understand
@@ -49,18 +55,12 @@ The main dashboard page went from **395 lines** to **67 lines** - an **83% reduc
 ```tsx
 // Before: Everything in one massive file
 // After: Clean, focused components
-import { 
-  Sidebar, 
-  PlanCard, 
-  ApiKeysTable, 
-  ApiKeyModal, 
-  DeleteModal 
-} from "@/components/dashboard";
-import { useApiKeys } from "@/hooks";
+import { Sidebar, PlanCard, ApiKeysTable, ApiKeyModal, DeleteModal } from '@/components/dashboard';
+import { useApiKeys } from '@/hooks';
 
 export default function DashboardPage() {
   const apiKeysLogic = useApiKeys();
-  
+
   return (
     <div>
       <Sidebar />
@@ -71,4 +71,4 @@ export default function DashboardPage() {
     </div>
   );
 }
-``` 
+```

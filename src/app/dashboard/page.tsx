@@ -1,26 +1,14 @@
 'use client';
-import { useState, useEffect } from "react";
-import { 
-  PlanCard, 
-  ApiKeysTable, 
-  ApiKeyModal, 
-  DeleteModal 
-} from "@/components/dashboard";
-import { Toast } from "@/components/ui/Toast";
-import { useApiKeys, useModalAndToast } from "@/hooks";
+import { useState, useEffect } from 'react';
+import { PlanCard, ApiKeysTable, ApiKeyModal, DeleteModal } from '@/components/dashboard';
+import { Toast } from '@/components/ui/Toast';
+import { useApiKeys, useModalAndToast } from '@/hooks';
 
 export default function DashboardPage() {
   const [cardVisible, setCardVisible] = useState(false);
   const [tableVisible, setTableVisible] = useState(false);
 
-  const {
-    modal,
-    setModal,
-    closeModal,
-    toast,
-    showToast,
-    clearToast,
-  } = useModalAndToast();
+  const { modal, setModal, closeModal, toast, showToast, clearToast } = useModalAndToast();
 
   const {
     apiKeys,
@@ -51,13 +39,8 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-gray-50 dark:bg-[#101014] flex">
       <main className="flex-1 py-8 px-2 sm:px-6">
         <div>
-          <PlanCard 
-            plan={plan}
-            usage={usage}
-            limit={1000}
-            visible={cardVisible}
-          />
-          
+          <PlanCard plan={plan} usage={usage} limit={1000} visible={cardVisible} />
+
           <ApiKeysTable
             apiKeys={apiKeys}
             loading={loading}
@@ -76,25 +59,15 @@ export default function DashboardPage() {
             onFormChange={setForm}
             onLimitEnabledChange={setLimitEnabled}
             onLimitChange={setLimit}
-            onSubmit={modal?.type === "create" ? handleCreate : handleEdit}
+            onSubmit={modal?.type === 'create' ? handleCreate : handleEdit}
             onClose={closeModal}
           />
 
-          <DeleteModal
-            modal={modal}
-            onDelete={handleDelete}
-            onClose={closeModal}
-          />
+          <DeleteModal modal={modal} onDelete={handleDelete} onClose={closeModal} />
 
-          {toast && (
-            <Toast
-              message={toast.message}
-              type={toast.type}
-              onClose={clearToast}
-            />
-          )}
+          {toast && <Toast message={toast.message} type={toast.type} onClose={clearToast} />}
         </div>
       </main>
     </div>
   );
-} 
+}

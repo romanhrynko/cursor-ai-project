@@ -10,8 +10,13 @@ export function generateApiKey() {
   const arr = new Uint8Array(16);
   if (typeof window !== 'undefined' && window.crypto) {
     window.crypto.getRandomValues(arr);
-    return prefix + Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
+    return (
+      prefix +
+      Array.from(arr)
+        .map((b) => b.toString(16).padStart(2, '0'))
+        .join('')
+    );
   }
   // fallback for SSR (not cryptographically secure)
   return prefix + Math.random().toString(16).slice(2, 18).padEnd(32, '0');
-} 
+}

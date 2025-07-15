@@ -1,5 +1,5 @@
-import { Suspense } from "react";
-import ProtectedPageContent from "./ProtectedPageContent";
+import { Suspense } from 'react';
+import ProtectedPageContent from './ProtectedPageContent';
 
 export default function ProtectedPage() {
   return (
@@ -7,4 +7,4 @@ export default function ProtectedPage() {
       <ProtectedPageContent />
     </Suspense>
   );
-} 
+}

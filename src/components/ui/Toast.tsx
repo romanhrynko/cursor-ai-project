@@ -14,8 +14,10 @@ export function Toast({ message, type = 'success', onClose, duration = 3000 }: T
   }, [onClose, duration]);
 
   return (
-    <div className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] px-6 py-3 rounded-lg shadow-lg text-white font-semibold transition-all animate-pop ${type === 'success' ? 'bg-green-600' : 'bg-red-600'}`}>
+    <div
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] px-6 py-3 rounded-lg shadow-lg text-white font-semibold transition-all animate-pop ${type === 'success' ? 'bg-green-600' : 'bg-red-600'}`}
+    >
       {message}
     </div>
   );
-} 
+}

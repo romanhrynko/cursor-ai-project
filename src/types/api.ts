@@ -13,13 +13,13 @@ export interface ApiKeyForm {
   value: string;
 }
 
-export type ModalType = 
-  | { type: "create" }
-  | { type: "edit"; key: ApiKey }
-  | { type: "delete"; key: ApiKey }
+export type ModalType =
+  | { type: 'create' }
+  | { type: 'edit'; key: ApiKey }
+  | { type: 'delete'; key: ApiKey }
   | null;
 
 export interface Toast {
   message: string;
   type: 'success' | 'error';
-} 
+}

@@ -7,7 +7,7 @@ interface DeleteModalProps {
 }
 
 export function DeleteModal({ modal, onDelete, onClose }: DeleteModalProps) {
-  if (!modal || modal.type !== "delete") {
+  if (!modal || modal.type !== 'delete') {
     return null;
   }
 
@@ -35,4 +35,4 @@ export function DeleteModal({ modal, onDelete, onClose }: DeleteModalProps) {
       </div>
     </div>
   );
-} 
+}

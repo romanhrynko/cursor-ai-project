@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiEdit2, FiTrash2, FiPlus, FiEye, FiEyeOff, FiCopy } from "react-icons/fi";
+import { FiEdit2, FiTrash2, FiPlus, FiEye, FiEyeOff, FiCopy } from 'react-icons/fi';
 import { ApiKey } from '@/types/api';
 import { maskKey } from '@/lib/utils';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
@@ -14,20 +14,22 @@ interface ApiKeysTableProps {
   onOpenDelete: (key: ApiKey) => void;
 }
 
-export function ApiKeysTable({ 
-  apiKeys, 
-  loading, 
-  error, 
-  visible, 
-  onOpenCreate, 
-  onOpenEdit, 
-  onOpenDelete 
+export function ApiKeysTable({
+  apiKeys,
+  loading,
+  error,
+  visible,
+  onOpenCreate,
+  onOpenEdit,
+  onOpenDelete,
 }: ApiKeysTableProps) {
   const [showKeyId, setShowKeyId] = useState<string | null>(null);
   const { copiedId, handleCopy } = useCopyToClipboard();
 
   return (
-    <div className={`bg-white dark:bg-[#18181c] rounded-2xl shadow-lg p-6 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+    <div
+      className={`bg-white dark:bg-[#18181c] rounded-2xl shadow-lg p-6 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+    >
       <div className="flex items-center justify-between mb-2">
         <div className="font-bold text-lg">API Keys</div>
         <button
@@ -39,7 +41,11 @@ export function ApiKeysTable({
         </button>
       </div>
       <p className="text-sm text-muted-foreground mb-4">
-        The key is used to authenticate your requests to the Research API. To learn more, see the <a href="#" className="underline">documentation</a> page.
+        The key is used to authenticate your requests to the Research API. To learn more, see the{' '}
+        <a href="#" className="underline">
+          documentation
+        </a>{' '}
+        page.
       </p>
       <div className="overflow-x-auto">
         <table className="w-full min-w-[1100px] text-sm table-auto">
@@ -55,11 +61,23 @@ export function ApiKeysTable({
           </thead>
           <tbody>
             {loading ? (
-              <tr><td colSpan={6} className="text-center py-8 text-muted-foreground">Loading...</td></tr>
+              <tr>
+                <td colSpan={6} className="text-center py-8 text-muted-foreground">
+                  Loading...
+                </td>
+              </tr>
             ) : error ? (
-              <tr><td colSpan={6} className="text-center py-8 text-red-500">{error}</td></tr>
+              <tr>
+                <td colSpan={6} className="text-center py-8 text-red-500">
+                  {error}
+                </td>
+              </tr>
             ) : apiKeys.length === 0 ? (
-              <tr><td colSpan={6} className="text-center py-8 text-muted-foreground">No API keys found.</td></tr>
+              <tr>
+                <td colSpan={6} className="text-center py-8 text-muted-foreground">
+                  No API keys found.
+                </td>
+              </tr>
             ) : (
               apiKeys.map((key, i) => (
                 <tr
@@ -75,7 +93,7 @@ export function ApiKeysTable({
                       <button
                         className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 cursor-pointer"
                         onClick={() => setShowKeyId(showKeyId === key.id ? null : key.id)}
-                        aria-label={showKeyId === key.id ? "Hide key" : "Show key"}
+                        aria-label={showKeyId === key.id ? 'Hide key' : 'Show key'}
                       >
                         {showKeyId === key.id ? <FiEyeOff /> : <FiEye />}
                       </button>
@@ -93,8 +111,12 @@ export function ApiKeysTable({
                       </button>
                     </div>
                   </td>
-                  <td className="py-2 pr-4 whitespace-nowrap">{key.created_at ? new Date(key.created_at).toLocaleString() : '-'}</td>
-                  <td className="py-2 pr-4 whitespace-nowrap">{key.updated_at ? new Date(key.updated_at).toLocaleString() : '-'}</td>
+                  <td className="py-2 pr-4 whitespace-nowrap">
+                    {key.created_at ? new Date(key.created_at).toLocaleString() : '-'}
+                  </td>
+                  <td className="py-2 pr-4 whitespace-nowrap">
+                    {key.updated_at ? new Date(key.updated_at).toLocaleString() : '-'}
+                  </td>
                   <td className="py-2 pr-4">
                     <div className="flex items-center gap-2 justify-center">
                       <button
@@ -121,4 +143,4 @@ export function ApiKeysTable({
       </div>
     </div>
   );
-} 
+}
