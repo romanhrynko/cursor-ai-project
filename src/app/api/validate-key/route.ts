@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     } else {
       return NextResponse.json({ valid: false, error: 'Invalid API key.' }, { status: 401 });
     }
-  } catch (error) {
+  } catch {
     return NextResponse.json({ valid: false, error: 'Invalid request.' }, { status: 400 });
   }
 } 

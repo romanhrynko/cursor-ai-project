@@ -28,7 +28,7 @@ export default function ProtectedPageContent() {
         } else {
           setToast({ message: data.error || "Invalid API key", type: "error" });
         }
-      } catch (error) {
+      } catch {
         setToast({ message: "Error validating API key", type: "error" });
       }
       setValidated(true);
