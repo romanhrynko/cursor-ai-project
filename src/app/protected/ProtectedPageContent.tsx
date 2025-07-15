@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { fetchApiKeys } from "@/api/apiKeys";
 import { Toast } from "@/components/ui/Toast";
 
 export default function ProtectedPageContent() {
@@ -17,12 +16,20 @@ export default function ProtectedPageContent() {
         setValidated(true);
         return;
       }
-      const { data } = await fetchApiKeys();
-      const isValid = data?.some(key => key.value === apiKey);
-      if (isValid) {
-        setToast({ message: "A valid API key, /protected can be accessed", type: "success" });
-      } else {
-        setToast({ message: "Invalid API key", type: "error" });
+      try {
+        const res = await fetch("/api/validate-key", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ apiKey }),
+        });
+        const data = await res.json();
+        if (data.valid) {
+          setToast({ message: "A valid API key, /protected can be accessed", type: "success" });
+        } else {
+          setToast({ message: data.error || "Invalid API key", type: "error" });
+        }
+      } catch (error) {
+        setToast({ message: "Error validating API key", type: "error" });
       }
       setValidated(true);
     }

@@ -50,7 +50,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#101014] flex">
       <main className="flex-1 py-8 px-2 sm:px-6">
-        <div className="max-w-4xl mx-auto">
+        <div>
           <PlanCard 
             plan={plan}
             usage={usage}

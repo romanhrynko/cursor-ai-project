@@ -42,7 +42,7 @@ export function ApiKeysTable({
         The key is used to authenticate your requests to the Research API. To learn more, see the <a href="#" className="underline">documentation</a> page.
       </p>
       <div className="overflow-x-auto">
-        <table className="min-w-full text-sm">
+        <table className="w-full min-w-[1100px] text-sm table-auto">
           <thead>
             <tr className="text-left text-muted-foreground border-b">
               <th className="py-2 font-semibold">Name</th>
